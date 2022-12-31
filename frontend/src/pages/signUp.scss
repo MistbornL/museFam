@@ -1,0 +1,24 @@
+.rbt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .rbt-input-multi.form-control.rbt-input {
+    align-items: center;
+
+    .rbt-input-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      .rbt-token.rbt-token-removeable {
+        display: flex;
+        background-color: rgb(212, 228, 228);
+        border-radius: 6px;
+        padding: 2px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
