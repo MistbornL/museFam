@@ -3,14 +3,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import InputField from "../components/InputField";
-import { formSchema } from "../components/formSchema";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "./signUp.scss";
 import { handleRegister } from "../api/handleRegister";
+import { formSchema } from "../components/formSchema";
 
 export const SignUp = () => {
   const formOptions = { resolver: yupResolver(formSchema) };
-  const [skillsList, setSkillsList] = useState(["ah", "yeah", "shnell"]);
+  const [options, setOptions] = useState(["ah", "yeah", "shnell"]);
+  const [skills, setSkills] = useState([]);
+  const [interests, setInterests] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [loading, setLoading] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -22,22 +24,23 @@ export const SignUp = () => {
     formState: { errors },
   } = useForm(formOptions);
 
-  const onSubmit = async (data) => {
-    setLoading(true);
+  const onSubmit = (data) => {
+    // setLoading(true);
+    // console.log(data);
+    // try {
+    //   await handleRegister(data);
+    // } catch (error) {
+    //   alert(error);
+    // }
+    // setLoading(false);
+    // navigate("/");
     console.log(data);
-    try {
-      await handleRegister(data);
-    } catch (error) {
-      alert(error);
-    }
-    setLoading(false);
-    navigate("/");
   };
-
+  console.log(errors);
   return (
     <div className="container h-100 mt-5">
       <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="col-14 col-md-9 col-lg-7 col-xl-12">
+        <div className="col-14 col-md-9 col-lg-7 col-xl-9">
           <div style={{ borderRadius: "15px" }} className="card p-5">
             <div className="card-body ">
               <h2 className="text-uppercase text-center mb5">Create Account</h2>
@@ -47,7 +50,7 @@ export const SignUp = () => {
               className="d-flex flex-column"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between ">
                 <InputField
                   name="firstName"
                   register={register}
@@ -60,7 +63,7 @@ export const SignUp = () => {
                 />
               </div>
 
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between ">
                 <InputField
                   name="lastName"
                   register={register}
@@ -74,7 +77,7 @@ export const SignUp = () => {
                 />
               </div>
 
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between ">
                 <InputField
                   name="userName"
                   register={register}
@@ -83,16 +86,16 @@ export const SignUp = () => {
                 <InputField name="skills" register={register} errors={errors} />
               </div>
 
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between ">
                 <InputField name="email" register={register} errors={errors} />
-                <div className="form-outline col-6 mb-4">
+                <div className="form-outline col-5 mb-4">
                   <Typeahead
                     id="basic-example"
-                    onChange={setSelectedSkills}
-                    options={skillsList}
+                    onChange={setInterests}
+                    options={options}
                     multiple
-                    placeholder="Select Tag"
-                    selected={selectedSkills}
+                    placeholder="Select Tag for interests"
+                    selected={interests}
                   />
                 </div>
               </div>

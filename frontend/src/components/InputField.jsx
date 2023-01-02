@@ -2,7 +2,7 @@ import React from "react";
 
 const InputField = ({ name, register, errors, type = "text" }) => {
   return (
-    <div className="form-outline col-6 mb-4">
+    <div className="form-outline col-5 mb-4">
       <input
         {...register(name)}
         id="form"

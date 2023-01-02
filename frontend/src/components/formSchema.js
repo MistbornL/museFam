@@ -16,5 +16,4 @@ export const formSchema = Yup.object().shape({
   location: Yup.string().required("location is mandatory"),
   postCode: Yup.string().required("post code is mandatory"),
   skills: Yup.string().required("skills  is mandatory"),
-  interests: Yup.string().required("interests  is mandatory"),
 });
