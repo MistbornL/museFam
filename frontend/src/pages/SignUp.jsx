@@ -10,15 +10,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 export const SignUp = () => {
   const formList = ["FirstForm", "SecondForm", "ThirdForm"];
-  const formOptions = {
-    resolver: yupResolver(formSchemaPersonal, formSchemaLocation),
-  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
-
+  console.log(formOptions);
   const formLength = formList.length;
 
   const [page, setPage] = useState(0);
@@ -33,6 +31,9 @@ export const SignUp = () => {
   const handleForms = () => {
     switch (page) {
       case 0: {
+        const formOptions = {
+          resolver: yupResolver(formSchemaPersonal),
+        };
         return (
           <div>
             <FirstForm register={register} errors={errors} />
@@ -40,14 +41,10 @@ export const SignUp = () => {
         );
       }
       case 1: {
-        return (
-          <SecondForm
-            register={register}
-            errors={errors}
-            onChange={onChange}
-            option={states}
-          />
-        );
+        const formOptions = {
+          resolver: yupResolver(formSchemaLocation),
+        };
+        return <SecondForm register={register} errors={errors} />;
       }
       case 2: {
         return <ThirdForm register={register} errors={errors} />;
@@ -56,13 +53,6 @@ export const SignUp = () => {
         return null;
     }
   };
-
-  const states = [
-    { id: "0", name: "Paris" },
-    { id: "1", name: "London" },
-    { id: "2", name: "Berlin" },
-    { id: "3", name: "Warsaw" },
-  ];
 
   const setForm = (e) => {
     const name = e.target.innerText;
@@ -81,18 +71,20 @@ export const SignUp = () => {
     }
   };
 
-  const onChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setValues({ ...values, [name]: type === "checkbox" ? checked : value });
+  const onSubmit = (data) => {
+    console.log(data);
   };
-
+  console.log(errors);
   return (
     <div className="App">
       <header>
         <Navbar />
       </header>
       <main className="flex justify-center">
-        <div className="flex-col  justify-center gap-4 place-content-center items-center  place-items-center ">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex-col  justify-center gap-4 place-content-center items-center  place-items-center "
+        >
           <ul className="flex justify-between w-full">
             <li
               onClick={setForm}
@@ -115,13 +107,12 @@ export const SignUp = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    {" "}
-                    <path stroke="none" d="M0 0h24v24H0z" />{" "}
-                    <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="12" y1="12" x2="12" y2="12.01" />
                     <path
                       d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
                       transform="rotate(45 12 12)"
-                    />{" "}
+                    />
                     <path
                       d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
                       transform="rotate(-45 12 12)"
@@ -135,7 +126,7 @@ export const SignUp = () => {
                       : "ml-2 text-blue-300 cursor-pointer"
                   }
                 >
-                  Person Info
+                  Registration
                 </span>
               </div>
             </li>
@@ -149,7 +140,6 @@ export const SignUp = () => {
             >
               <div className="flex items-center">
                 <span className="stepper-head-icon">
-                  {" "}
                   <svg
                     className="h-8 w-8 text-blue-200"
                     width="24"
@@ -161,13 +151,12 @@ export const SignUp = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    {" "}
                     <path stroke="none" d="M0 0h24v24H0z" />{" "}
                     <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
                     <path
                       d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
                       transform="rotate(45 12 12)"
-                    />{" "}
+                    />
                     <path
                       d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
                       transform="rotate(-45 12 12)"
@@ -223,7 +212,7 @@ export const SignUp = () => {
                       : "ml-2 text-blue-300 cursor-pointer"
                   }
                 >
-                  Login Info
+                  Person Info
                 </span>
               </div>
             </li>
@@ -241,7 +230,7 @@ export const SignUp = () => {
             </button>
             {page === 2 ? (
               <button
-                onClick={handleSubmit}
+                type="submit"
                 className="bg-blue-200 hover:bg-blue-300 rounded-md text-gray-800 font-bold py-2 px-4 "
               >
                 Submit
@@ -255,7 +244,7 @@ export const SignUp = () => {
               </button>
             )}
           </div>
-        </div>
+        </form>
       </main>
     </div>
   );

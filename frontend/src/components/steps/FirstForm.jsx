@@ -10,6 +10,8 @@ const FirstForm = ({ errors, register }) => {
       >
         <InputField name={"fullName"} register={register} errors={errors} />
 
+        <InputField name={"userName"} register={register} errors={errors} />
+
         <InputField name={"email"} register={register} errors={errors} />
 
         <InputField
