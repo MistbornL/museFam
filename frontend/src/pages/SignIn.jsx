@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { formSchemaLogin } from "../components/formSchemaLogin";
+
 import { Navbar } from "../Navigation/Navbar";
+import { formSchemaLogin } from "../components/Schema/formSchemaLogin";
 
 export const SignIn = () => {
   const formOptions = { resolver: yupResolver(formSchemaLogin) };

@@ -1,13 +1,25 @@
 import React from "react";
 
-const InputField = ({ name, register, errors, type = "text" }) => {
+const InputField = ({
+  name,
+  register,
+  errors,
+  type = "text",
+  holder = name,
+}) => {
   return (
-    <div className="form-outline col-5 mb-4">
+    <div className="form-outline mb-4">
+      <label
+        className="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor={name}
+      >
+        {name}
+      </label>
       <input
         {...register(name)}
         id="form"
         className={`form-control  ${errors[name] ? "is-invalid" : ""}`}
-        placeholder={name + "..."}
+        placeholder={holder}
         type={type}
       />
       <div className="invalid-feedback">

@@ -3,9 +3,21 @@ import FirstForm from "../components/steps/FirstForm";
 import SecondForm from "../components/steps/SecondForm";
 import ThirdForm from "../components/steps/ThirdForm";
 import { Navbar } from "../Navigation/Navbar";
+import { useForm } from "react-hook-form";
+import { formSchemaPersonal } from "../components/Schema/formSchemaPersonal";
+import { formSchemaLocation } from "../components/Schema/formSchemaLocation";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const SignUp = () => {
   const formList = ["FirstForm", "SecondForm", "ThirdForm"];
+  const formOptions = {
+    resolver: yupResolver(formSchemaPersonal, formSchemaLocation),
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm(formOptions);
 
   const formLength = formList.length;
 
@@ -18,35 +30,27 @@ export const SignUp = () => {
     setPage(page === formLength - 1 ? 0 : page + 1);
   };
 
-  const initialValues = {
-    name: "",
-    lastname: "",
-    password: "",
-    confirmPassword: "",
-    username: "",
-    city: "1",
-    address: "",
-    zip: "",
-    terms: "",
-  };
-  const [values, setValues] = useState(initialValues);
-
   const handleForms = () => {
     switch (page) {
       case 0: {
         return (
           <div>
-            <FirstForm formValues={values} onChange={onChange} />
+            <FirstForm register={register} errors={errors} />
           </div>
         );
       }
       case 1: {
         return (
-          <SecondForm formValues={values} onChange={onChange} option={states} />
+          <SecondForm
+            register={register}
+            errors={errors}
+            onChange={onChange}
+            option={states}
+          />
         );
       }
       case 2: {
-        return <ThirdForm formValues={values} onChange={onChange} />;
+        return <ThirdForm register={register} errors={errors} />;
       }
       default:
         return null;
@@ -60,24 +64,16 @@ export const SignUp = () => {
     { id: "3", name: "Warsaw" },
   ];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await setTimeout(() => {
-      console.log("form", values);
-    }, 2000);
-    return response;
-  };
-
   const setForm = (e) => {
     const name = e.target.innerText;
     switch (name) {
-      case "Person Info": {
+      case "Registration": {
         return setPage(0);
       }
       case "Other Info": {
         return setPage(1);
       }
-      case "Login Info": {
+      case "Person Info": {
         return setPage(2);
       }
       default:
@@ -185,7 +181,7 @@ export const SignUp = () => {
                       : "ml-2 text-blue-300 cursor-pointer"
                   }
                 >
-                  Other Info{" "}
+                  Other Info
                 </span>
               </div>
             </li>
@@ -197,7 +193,6 @@ export const SignUp = () => {
             >
               <div className="flex items-center">
                 <span className="stepper-head-icon">
-                  {" "}
                   <svg
                     className="h-8 w-8 text-blue-200"
                     width="24"
@@ -209,13 +204,12 @@ export const SignUp = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    {" "}
-                    <path stroke="none" d="M0 0h24v24H0z" />{" "}
-                    <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="12" y1="12" x2="12" y2="12.01" />
                     <path
                       d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
                       transform="rotate(45 12 12)"
-                    />{" "}
+                    />
                     <path
                       d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
                       transform="rotate(-45 12 12)"
@@ -229,8 +223,7 @@ export const SignUp = () => {
                       : "ml-2 text-blue-300 cursor-pointer"
                   }
                 >
-                  {" "}
-                  Login Info{" "}
+                  Login Info
                 </span>
               </div>
             </li>
