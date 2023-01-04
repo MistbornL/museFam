@@ -1,152 +1,269 @@
 import React, { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import InputField from "../components/InputField";
-import { Typeahead } from "react-bootstrap-typeahead";
-import "./signUp.scss";
-import { handleRegister } from "../api/handleRegister";
-import { formSchema } from "../components/formSchema";
+import FirstForm from "../components/steps/FirstForm";
+import SecondForm from "../components/steps/SecondForm";
+import ThirdForm from "../components/steps/ThirdForm";
+import { Navbar } from "../Navigation/Navbar";
 
 export const SignUp = () => {
-  const formOptions = { resolver: yupResolver(formSchema) };
-  const [options, setOptions] = useState(["ah", "yeah", "shnell"]);
-  const [skills, setSkills] = useState([]);
-  const [interests, setInterests] = useState([]);
-  const [selectedSkills, setSelectedSkills] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const navigate = useNavigate();
+  const formList = ["FirstForm", "SecondForm", "ThirdForm"];
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm(formOptions);
+  const formLength = formList.length;
 
-  const onSubmit = (data) => {
-    // setLoading(true);
-    // console.log(data);
-    // try {
-    //   await handleRegister(data);
-    // } catch (error) {
-    //   alert(error);
-    // }
-    // setLoading(false);
-    // navigate("/");
-    console.log(data);
+  const [page, setPage] = useState(0);
+
+  const handlePrev = () => {
+    setPage(page === 0 ? formLength - 1 : page - 1);
   };
-  console.log(errors);
+  const handleNext = () => {
+    setPage(page === formLength - 1 ? 0 : page + 1);
+  };
+
+  const initialValues = {
+    name: "",
+    lastname: "",
+    password: "",
+    confirmPassword: "",
+    username: "",
+    city: "1",
+    address: "",
+    zip: "",
+    terms: "",
+  };
+  const [values, setValues] = useState(initialValues);
+
+  const handleForms = () => {
+    switch (page) {
+      case 0: {
+        return (
+          <div>
+            <FirstForm formValues={values} onChange={onChange} />
+          </div>
+        );
+      }
+      case 1: {
+        return (
+          <SecondForm formValues={values} onChange={onChange} option={states} />
+        );
+      }
+      case 2: {
+        return <ThirdForm formValues={values} onChange={onChange} />;
+      }
+      default:
+        return null;
+    }
+  };
+
+  const states = [
+    { id: "0", name: "Paris" },
+    { id: "1", name: "London" },
+    { id: "2", name: "Berlin" },
+    { id: "3", name: "Warsaw" },
+  ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await setTimeout(() => {
+      console.log("form", values);
+    }, 2000);
+    return response;
+  };
+
+  const setForm = (e) => {
+    const name = e.target.innerText;
+    switch (name) {
+      case "Person Info": {
+        return setPage(0);
+      }
+      case "Other Info": {
+        return setPage(1);
+      }
+      case "Login Info": {
+        return setPage(2);
+      }
+      default:
+        setPage(0);
+    }
+  };
+
+  const onChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setValues({ ...values, [name]: type === "checkbox" ? checked : value });
+  };
+
   return (
-    <div className="container h-100 mt-5">
-      <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="col-14 col-md-9 col-lg-7 col-xl-9">
-          <div style={{ borderRadius: "15px" }} className="card p-5">
-            <div className="card-body ">
-              <h2 className="text-uppercase text-center mb5">Create Account</h2>
-            </div>
-
-            <form
-              className="d-flex flex-column"
-              onSubmit={handleSubmit(onSubmit)}
+    <div className="App">
+      <header>
+        <Navbar />
+      </header>
+      <main className="flex justify-center">
+        <div className="flex-col  justify-center gap-4 place-content-center items-center  place-items-center ">
+          <ul className="flex justify-between w-full">
+            <li
+              onClick={setForm}
+              className={
+                page === 0
+                  ? "bg-blue-300 w-2/6 rounded-lg  "
+                  : "bg: transparent"
+              }
             >
-              <div className="d-flex justify-content-between ">
-                <InputField
-                  name="firstName"
-                  register={register}
-                  errors={errors}
-                />
-                <InputField
-                  name="location"
-                  register={register}
-                  errors={errors}
-                />
-              </div>
-
-              <div className="d-flex justify-content-between ">
-                <InputField
-                  name="lastName"
-                  register={register}
-                  errors={errors}
-                />
-
-                <InputField
-                  name="postCode"
-                  register={register}
-                  errors={errors}
-                />
-              </div>
-
-              <div className="d-flex justify-content-between ">
-                <InputField
-                  name="userName"
-                  register={register}
-                  errors={errors}
-                />
-                <InputField name="skills" register={register} errors={errors} />
-              </div>
-
-              <div className="d-flex justify-content-between ">
-                <InputField name="email" register={register} errors={errors} />
-                <div className="form-outline col-5 mb-4">
-                  <Typeahead
-                    id="basic-example"
-                    onChange={setInterests}
-                    options={options}
-                    multiple
-                    placeholder="Select Tag for interests"
-                    selected={interests}
-                  />
-                </div>
-              </div>
-
-              <InputField
-                type="password"
-                name="password"
-                register={register}
-                errors={errors}
-              />
-
-              <InputField
-                type="password"
-                name="repeatPassword"
-                register={register}
-                errors={errors}
-              />
-              <div className="form-check d-flex justify-content-center  gap-2 mb-3">
-                <label className="form-check-label" htmlFor="form2Example3">
-                  I agree all statements in <a href="#!">Terms of service</a>
-                  <input
-                    style={{ marginLeft: "7px" }}
-                    className="form-check-input "
-                    type="checkbox"
-                    onChange={(e) => {
-                      e.target.checked ? setChecked(true) : setChecked(false);
-                    }}
-                    id="form2Example3"
-                  />
-                </label>
-              </div>
-              <div className="d-flex justify-content-center">
-                <button
-                  disabled={!checked}
-                  type="submit"
-                  className="btn w-50 btn-primary btn-block btn-lg gradient-custom-4 text-body"
+              <div className="flex items-center ">
+                <span className="stepper-head-icon">
+                  <svg
+                    className="h-8 w-8 text-blue-200"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {" "}
+                    <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                    <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
+                    <path
+                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
+                      transform="rotate(45 12 12)"
+                    />{" "}
+                    <path
+                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
+                      transform="rotate(-45 12 12)"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className={
+                    page === 0
+                      ? "ml-2 text-white font-medium"
+                      : "ml-2 text-blue-300 cursor-pointer"
+                  }
                 >
-                  {loading ? <LoadingSpinner /> : "Register"}
-                </button>
+                  Person Info
+                </span>
               </div>
-
-              <p className="text-center text-muted mt-5 mb-0">
-                Already have an account?{" "}
-                <a href="/" className="fw-bold text-body">
-                  <u style={{ color: "#007bff" }}>Login here</u>
-                </a>
-              </p>
-            </form>
+            </li>
+            <li
+              onClick={setForm}
+              className={
+                page === 1
+                  ? "bg-blue-300  w-2/6 rounded-lg"
+                  : "bg: transparent "
+              }
+            >
+              <div className="flex items-center">
+                <span className="stepper-head-icon">
+                  {" "}
+                  <svg
+                    className="h-8 w-8 text-blue-200"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {" "}
+                    <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                    <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
+                    <path
+                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
+                      transform="rotate(45 12 12)"
+                    />{" "}
+                    <path
+                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
+                      transform="rotate(-45 12 12)"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className={
+                    page === 1
+                      ? "ml-2 text-white font-medium"
+                      : "ml-2 text-blue-300 cursor-pointer"
+                  }
+                >
+                  Other Info{" "}
+                </span>
+              </div>
+            </li>
+            <li
+              onClick={setForm}
+              className={
+                page === 2 ? "bg-blue-300 w-2/6 rounded-lg" : "bg: transparent"
+              }
+            >
+              <div className="flex items-center">
+                <span className="stepper-head-icon">
+                  {" "}
+                  <svg
+                    className="h-8 w-8 text-blue-200"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {" "}
+                    <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                    <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
+                    <path
+                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
+                      transform="rotate(45 12 12)"
+                    />{" "}
+                    <path
+                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
+                      transform="rotate(-45 12 12)"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className={
+                    page === 2
+                      ? "ml-2 text-white font-medium"
+                      : "ml-2 text-blue-300 cursor-pointer"
+                  }
+                >
+                  {" "}
+                  Login Info{" "}
+                </span>
+              </div>
+            </li>
+          </ul>
+          <div className="flex-1 justify-center w-full rounded-2x">
+            {handleForms()}
+          </div>
+          <div className="grid grid-cols-2 gap-4 place-content-center items-center">
+            <button
+              onClick={handlePrev}
+              className="bg-blue-200  hover:bg-blue-300 rounded-md text-gray-800 font-bold py-2 px-4 disabled:bg-gray-400 "
+              disabled={page === 0}
+            >
+              Prev
+            </button>
+            {page === 2 ? (
+              <button
+                onClick={handleSubmit}
+                className="bg-blue-200 hover:bg-blue-300 rounded-md text-gray-800 font-bold py-2 px-4 "
+              >
+                Submit
+              </button>
+            ) : (
+              <button
+                onClick={handleNext}
+                className="bg-blue-200 hover:bg-blue-300 rounded-md text-gray-800 font-bold py-2 px-4 "
+              >
+                Next
+              </button>
+            )}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Close } from "@material-ui/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,11 @@ const MenuItems = ({ showMenu, active }) => {
           : "hidden"
       }
     >
-      <Close onClick={showMenu} className="cursor-pointer" />
+      <FontAwesomeIcon
+        icon="fa-xmark"
+        onClick={showMenu}
+        className="cursor-pointer"
+      />
       <li>
         <Link to="/">Home</Link>
       </li>
