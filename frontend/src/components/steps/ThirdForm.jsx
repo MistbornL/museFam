@@ -11,8 +11,6 @@ const FirstForm = ({ errors, register }) => {
         <InputField name={"skills"} register={register} errors={errors} />
 
         <InputField name={"interests"} register={register} errors={errors} />
-
-        <InputField name={"streetName"} register={register} errors={errors} />
       </form>
     </div>
   );

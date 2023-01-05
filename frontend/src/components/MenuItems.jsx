@@ -11,11 +11,11 @@ const MenuItems = ({ showMenu, active }) => {
           : "hidden"
       }
     >
-      <FontAwesomeIcon
+      {/* <FontAwesomeIcon
         icon="fa-xmark"
         onClick={showMenu}
         className="cursor-pointer"
-      />
+      /> */}
       <li>
         <Link to="/">Home</Link>
       </li>

@@ -7,16 +7,19 @@ import { useForm } from "react-hook-form";
 import { formSchemaPersonal } from "../components/Schema/formSchemaPersonal";
 import { formSchemaLocation } from "../components/Schema/formSchemaLocation";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { StepIcons } from "../components/StepIcons";
 
 export const SignUp = () => {
   const formList = ["FirstForm", "SecondForm", "ThirdForm"];
-
+  const steps = ["Registration", "Other Info", "Person Info"];
+  const formOptions = {
+    resolver: yupResolver(formSchemaPersonal),
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
-  console.log(formOptions);
   const formLength = formList.length;
 
   const [page, setPage] = useState(0);
@@ -25,15 +28,16 @@ export const SignUp = () => {
     setPage(page === 0 ? formLength - 1 : page - 1);
   };
   const handleNext = () => {
-    setPage(page === formLength - 1 ? 0 : page + 1);
+    if (Object.keys(errors).length === 5 && page === 0) {
+      setPage(page === formLength - 1 ? 0 : page + 1);
+    } else if (page === 1 && Object.keys(errors).length === 0) {
+      setPage(page === formLength - 1 ? 0 : page + 1);
+    }
   };
 
   const handleForms = () => {
     switch (page) {
       case 0: {
-        const formOptions = {
-          resolver: yupResolver(formSchemaPersonal),
-        };
         return (
           <div>
             <FirstForm register={register} errors={errors} />
@@ -41,9 +45,6 @@ export const SignUp = () => {
         );
       }
       case 1: {
-        const formOptions = {
-          resolver: yupResolver(formSchemaLocation),
-        };
         return <SecondForm register={register} errors={errors} />;
       }
       case 2: {
@@ -86,136 +87,11 @@ export const SignUp = () => {
           className="flex-col  justify-center gap-4 place-content-center items-center  place-items-center "
         >
           <ul className="flex justify-between w-full">
-            <li
-              onClick={setForm}
-              className={
-                page === 0
-                  ? "bg-blue-300 w-2/6 rounded-lg  "
-                  : "bg: transparent"
-              }
-            >
-              <div className="flex items-center ">
-                <span className="stepper-head-icon">
-                  <svg
-                    className="h-8 w-8 text-blue-200"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="12" y1="12" x2="12" y2="12.01" />
-                    <path
-                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
-                      transform="rotate(45 12 12)"
-                    />
-                    <path
-                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
-                      transform="rotate(-45 12 12)"
-                    />
-                  </svg>
-                </span>
-                <span
-                  className={
-                    page === 0
-                      ? "ml-2 text-white font-medium"
-                      : "ml-2 text-blue-300 cursor-pointer"
-                  }
-                >
-                  Registration
-                </span>
-              </div>
-            </li>
-            <li
-              onClick={setForm}
-              className={
-                page === 1
-                  ? "bg-blue-300  w-2/6 rounded-lg"
-                  : "bg: transparent "
-              }
-            >
-              <div className="flex items-center">
-                <span className="stepper-head-icon">
-                  <svg
-                    className="h-8 w-8 text-blue-200"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />{" "}
-                    <line x1="12" y1="12" x2="12" y2="12.01" />{" "}
-                    <path
-                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
-                      transform="rotate(45 12 12)"
-                    />
-                    <path
-                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
-                      transform="rotate(-45 12 12)"
-                    />
-                  </svg>
-                </span>
-                <span
-                  className={
-                    page === 1
-                      ? "ml-2 text-white font-medium"
-                      : "ml-2 text-blue-300 cursor-pointer"
-                  }
-                >
-                  Other Info
-                </span>
-              </div>
-            </li>
-            <li
-              onClick={setForm}
-              className={
-                page === 2 ? "bg-blue-300 w-2/6 rounded-lg" : "bg: transparent"
-              }
-            >
-              <div className="flex items-center">
-                <span className="stepper-head-icon">
-                  <svg
-                    className="h-8 w-8 text-blue-200"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="12" y1="12" x2="12" y2="12.01" />
-                    <path
-                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
-                      transform="rotate(45 12 12)"
-                    />
-                    <path
-                      d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10"
-                      transform="rotate(-45 12 12)"
-                    />
-                  </svg>
-                </span>
-                <span
-                  className={
-                    page === 2
-                      ? "ml-2 text-white font-medium"
-                      : "ml-2 text-blue-300 cursor-pointer"
-                  }
-                >
-                  Person Info
-                </span>
-              </div>
-            </li>
+            {steps.map((step, index) => {
+              return (
+                <StepIcons name={step} key={index} page={page} index={index} />
+              );
+            })}
           </ul>
           <div className="flex-1 justify-center w-full rounded-2x">
             {handleForms()}

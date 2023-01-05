@@ -12,4 +12,11 @@ export const formSchemaPersonal = Yup.object().shape({
   repeatPassword: Yup.string()
     .required("Password is mandatory")
     .oneOf([Yup.ref("password")], "Passwords does not match"),
+  streetName: Yup.string().required("Street name is required"),
+  streetNo: Yup.number()
+    .required("Street number is required")
+    .positive("Street number must be a positive number"),
+  postalCode: Yup.string().required("Postal code is required"),
+  country: Yup.string().required("Country code is required"),
+  city: Yup.string().required("City code is required"),
 });

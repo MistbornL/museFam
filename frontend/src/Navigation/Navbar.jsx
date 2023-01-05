@@ -20,30 +20,30 @@ export const Navbar = () => {
 
       <nav>
         <div className="absolute right-6 md:hidden top-6 scale-150">
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={"fa-xmark"}
             onClick={showMenu}
             className="scale-150 cursor-pointer"
-          />
+          /> */}
         </div>
 
         <ul className="hidden md:flex gap-8 p-6 uppercase bg-white/10">
-          <li className="hover:bg-gray-dark px-3">
+          <li className="hover:bg-gray-dark px-3 py-3">
             <Link to="/">Home</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3">
+          <li className="hover:bg-gray-dark px-3 py-3">
             <Link to="/">Testimonials</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3">
+          <li className="hover:bg-gray-dark px-3 py-3">
             <Link to="/">Information</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3">
+          <li className="hover:bg-gray-dark px-3 py-3">
             <Link to="/">Jobs</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3">
+          <li className="hover:bg-gray-dark px-3 py-3">
             <Link to="/">About</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3">
+          <li className="hover:bg-gray-dark px-3 py-3">
             <Link to="/">Contact</Link>
           </li>
         </ul>
