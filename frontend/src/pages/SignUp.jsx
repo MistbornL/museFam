@@ -9,6 +9,7 @@ import { formSchemaLocation } from "../components/Schema/formSchemaLocation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StepIcons } from "../components/StepIcons";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const SignUp = () => {
   const formList = ["FirstForm", "SecondForm", "ThirdForm"];
@@ -31,8 +32,8 @@ export const SignUp = () => {
   };
   const handleNext = () => {
     if (
-      Object.keys(errors).length === 5 ||
-      (Object.keys(errors).length === 0 && page === 0)
+      (Object.keys(errors).length === 5 || Object.keys(errors).length === 0) &&
+      page === 0
     ) {
       console.log(errors);
       setPage(page === formLength - 1 ? 0 : page + 1);
@@ -50,11 +51,7 @@ export const SignUp = () => {
   const handleForms = () => {
     switch (page) {
       case 0: {
-        return (
-          <div>
-            <FirstForm register={register} errors={errors} />
-          </div>
-        );
+        return <FirstForm register={register} errors={errors} />;
       }
       case 1: {
         return <SecondForm register={register} errors={errors} />;
@@ -76,21 +73,21 @@ export const SignUp = () => {
       <header>
         <Navbar />
       </header>
-      <main className="flex justify-center md:max-w-2xl md:flex">
+      <main className="flex justify-center  md:flex">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex-col  justify-center gap-4 place-content-center items-center  place-items-center "
+          className=" flex-col md:w-144  gap-4 place-content-center items-center  place-items-center "
         >
           <ul className="flex justify-between w-full">
             {steps.map((step, index) => {
               return (
-                <Fragment key={index}>
+                <li key={index}>
                   <StepIcons name={step} page={page} index={index} />
-                </Fragment>
+                </li>
               );
             })}
           </ul>
-          <div className="flex-1 justify-center w-full rounded-2x">
+          <div className="flex justify-center w-full rounded-2x">
             {handleForms()}
           </div>
           <div className="grid grid-cols-2 gap-4 place-content-center items-center">
