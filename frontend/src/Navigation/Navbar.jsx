@@ -13,9 +13,7 @@ export const Navbar = () => {
   return (
     <div className=" w-full text-white flex justify-between p-4 items-center">
       <div className="text-2xl font-bold text-center uppercase">
-        <h1>
-          e <span className="block text-4xl">Tail</span>
-        </h1>
+        <h1>MuseFam</h1>
       </div>
 
       <nav>
@@ -28,22 +26,40 @@ export const Navbar = () => {
         </div>
 
         <ul className="hidden md:flex gap-8 p-6 uppercase bg-white/10">
-          <li className="hover:bg-gray-dark px-3 py-3">
+          <li
+            style={{ borderRadius: "5px" }}
+            className="hover:bg-gray-dark px-3 py-3 "
+          >
             <Link to="/">Home</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3 py-3">
+          <li
+            className="hover:bg-gray-dark px-3 py-3"
+            style={{ borderRadius: "5px" }}
+          >
             <Link to="/">Testimonials</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3 py-3">
+          <li
+            style={{ borderRadius: "5px" }}
+            className="hover:bg-gray-dark px-3 py-3"
+          >
             <Link to="/">Information</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3 py-3">
+          <li
+            style={{ borderRadius: "5px" }}
+            className="hover:bg-gray-dark px-3 py-3"
+          >
             <Link to="/">Jobs</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3 py-3">
+          <li
+            style={{ borderRadius: "5px" }}
+            className="hover:bg-gray-dark px-3 py-3"
+          >
             <Link to="/">About</Link>
           </li>
-          <li className="hover:bg-gray-dark px-3 py-3">
+          <li
+            style={{ borderRadius: "5px" }}
+            className="hover:bg-gray-dark px-3 py-3"
+          >
             <Link to="/">Contact</Link>
           </li>
         </ul>

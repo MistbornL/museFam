@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import FirstForm from "../components/steps/FirstForm";
 import SecondForm from "../components/steps/SecondForm";
 import ThirdForm from "../components/steps/ThirdForm";
@@ -8,16 +8,18 @@ import { formSchemaPersonal } from "../components/Schema/formSchemaPersonal";
 import { formSchemaLocation } from "../components/Schema/formSchemaLocation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StepIcons } from "../components/StepIcons";
+import { useEffect } from "react";
 
 export const SignUp = () => {
   const formList = ["FirstForm", "SecondForm", "ThirdForm"];
-  const steps = ["Registration", "Other Info", "Person Info"];
+  const steps = ["Registration", "Location", "Person Info"];
   const formOptions = {
     resolver: yupResolver(formSchemaPersonal),
   };
   const {
     register,
     handleSubmit,
+    clearErrors,
     formState: { errors },
   } = useForm(formOptions);
   const formLength = formList.length;
@@ -28,12 +30,22 @@ export const SignUp = () => {
     setPage(page === 0 ? formLength - 1 : page - 1);
   };
   const handleNext = () => {
-    if (Object.keys(errors).length === 5 && page === 0) {
+    if (
+      Object.keys(errors).length === 5 ||
+      (Object.keys(errors).length === 0 && page === 0)
+    ) {
+      console.log(errors);
       setPage(page === formLength - 1 ? 0 : page + 1);
     } else if (page === 1 && Object.keys(errors).length === 0) {
       setPage(page === formLength - 1 ? 0 : page + 1);
     }
   };
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 5) {
+      clearErrors();
+    }
+  }, [errors]);
 
   const handleForms = () => {
     switch (page) {
@@ -55,33 +67,16 @@ export const SignUp = () => {
     }
   };
 
-  const setForm = (e) => {
-    const name = e.target.innerText;
-    switch (name) {
-      case "Registration": {
-        return setPage(0);
-      }
-      case "Other Info": {
-        return setPage(1);
-      }
-      case "Person Info": {
-        return setPage(2);
-      }
-      default:
-        setPage(0);
-    }
-  };
-
   const onSubmit = (data) => {
     console.log(data);
   };
-  console.log(errors);
+
   return (
     <div className="App">
       <header>
         <Navbar />
       </header>
-      <main className="flex justify-center">
+      <main className="flex justify-center md:max-w-2xl md:flex">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex-col  justify-center gap-4 place-content-center items-center  place-items-center "
@@ -89,7 +84,9 @@ export const SignUp = () => {
           <ul className="flex justify-between w-full">
             {steps.map((step, index) => {
               return (
-                <StepIcons name={step} key={index} page={page} index={index} />
+                <Fragment key={index}>
+                  <StepIcons name={step} page={page} index={index} />
+                </Fragment>
               );
             })}
           </ul>
