@@ -5,7 +5,7 @@ import ThirdForm from "../components/steps/ThirdForm";
 import { Navbar } from "../Navigation/Navbar";
 import { useForm } from "react-hook-form";
 import { formSchemaPersonal } from "../components/Schema/formSchemaPersonal";
-import { formSchemaLocation } from "../components/Schema/formSchemaLocation";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StepIcons } from "../components/StepIcons";
 import { useEffect } from "react";
@@ -73,12 +73,12 @@ export const SignUp = () => {
       <header>
         <Navbar />
       </header>
-      <main className="flex justify-center  md:flex">
+      <main className="flex justify-center  md:flex ">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className=" flex-col md:w-144  gap-4 place-content-center items-center  place-items-center "
         >
-          <ul className="flex justify-between w-full">
+          <ul className="flex justify-between md:w-full ">
             {steps.map((step, index) => {
               return (
                 <li key={index}>

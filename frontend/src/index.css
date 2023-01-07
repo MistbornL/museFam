@@ -3,16 +3,22 @@
 @tailwind utilities;
 body {
   margin: 0;
+  height: fit-content;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #46546e;
-  background-image: url("https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80");
+  background-color: #120818;
+  background-image: url("./assets/cosmonaut.png");
   background-size: cover;
-  background-position: center;
+  /* background-position: center; */
+  background-repeat: no-repeat;
   background-attachment: fixed;
+}
+@font-face {
+  font-family: "space";
+  src: local("Space"), url("./fonts/Space/Space.ttf") format("truetype");
 }
 
 code {

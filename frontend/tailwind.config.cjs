@@ -8,6 +8,7 @@ module.exports = {
       xl: "1440px",
     },
     colors: {
+      yellow: "#f99824",
       blue: "#1fb6ff",
       purple: "#7e5bef",
       pink: "#ff49db",
@@ -20,6 +21,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ["Graphik", "sans-serif"],
+
       serif: ["Merriweather", "serif"],
     },
     extend: {

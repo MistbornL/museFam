@@ -30,35 +30,39 @@ export const Navbar = () => {
             style={{ borderRadius: "5px" }}
             className="hover:bg-gray-dark px-3 py-3 "
           >
-            <Link to="/">Home</Link>
+            <Link className="text-white" to="/">
+              Home
+            </Link>
           </li>
           <li
             className="hover:bg-gray-dark px-3 py-3"
             style={{ borderRadius: "5px" }}
           >
-            <Link to="/">Testimonials</Link>
+            <Link className="text-white" to="/">
+              Testimonials
+            </Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="hover:bg-gray-dark px-3 py-3"
+            className="text-white hover:bg-gray-dark px-3 py-3"
           >
             <Link to="/">Information</Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="hover:bg-gray-dark px-3 py-3"
+            className="text-white hover:bg-gray-dark px-3 py-3"
           >
             <Link to="/">Jobs</Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="hover:bg-gray-dark px-3 py-3"
+            className="text-white hover:bg-gray-dark px-3 py-3"
           >
             <Link to="/">About</Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="hover:bg-gray-dark px-3 py-3"
+            className="text-white hover:bg-gray-dark px-3 py-3"
           >
             <Link to="/">Contact</Link>
           </li>
