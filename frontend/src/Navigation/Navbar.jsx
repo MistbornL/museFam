@@ -12,7 +12,7 @@ export const Navbar = () => {
 
   return (
     <div className=" w-full text-white flex justify-between p-4 items-center">
-      <div className="text-2xl font-bold text-center uppercase">
+      <div className="menu text-2xl font-bold text-center uppercase">
         <h1>MuseFam</h1>
       </div>
 

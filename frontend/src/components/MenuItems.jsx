@@ -16,7 +16,7 @@ const MenuItems = ({ showMenu, active }) => {
         onClick={showMenu}
         className="cursor-pointer"
       /> */}
-      <li style={{ fontFamily: "space" }}>
+      <li>
         <Link to="/">Home</Link>
       </li>
       <li>
