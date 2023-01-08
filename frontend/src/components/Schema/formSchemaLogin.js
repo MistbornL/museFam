@@ -5,5 +5,5 @@ export const formSchemaLogin = Yup.object().shape({
     .required("Password is mandatory")
     .min(3, "Password must be at 3 char long"),
 
-  email: Yup.string().email().required("email is mandatory"),
+  userName: Yup.string().required("password is mandatory"),
 });

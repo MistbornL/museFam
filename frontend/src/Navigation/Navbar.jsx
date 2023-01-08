@@ -25,17 +25,17 @@ export const Navbar = () => {
           /> */}
         </div>
 
-        <ul className="hidden md:flex gap-8 p-6 uppercase bg-white/10">
+        <ul className="hidden text-2xl md:flex gap-8 p-6  bg-white/10">
           <li
             style={{ borderRadius: "5px" }}
-            className="hover:bg-gray-dark px-3 py-3 "
+            className=" hover:scale-150 transition-transform px-3 py-3 "
           >
-            <Link className="text-white" to="/">
+            <Link className="text-white " to="/">
               Home
             </Link>
           </li>
           <li
-            className="hover:bg-gray-dark px-3 py-3"
+            className="hover:scale-150 transition-transform px-3 py-3"
             style={{ borderRadius: "5px" }}
           >
             <Link className="text-white" to="/">
@@ -44,25 +44,25 @@ export const Navbar = () => {
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="text-white hover:bg-gray-dark px-3 py-3"
+            className="hover:scale-150 transition-transform px-3 py-3"
           >
             <Link to="/">Information</Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="text-white hover:bg-gray-dark px-3 py-3"
+            className="hover:scale-150 transition-transform px-3 py-3"
           >
             <Link to="/">Jobs</Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="text-white hover:bg-gray-dark px-3 py-3"
+            className="hover:scale-150 transition-transform px-3 py-3"
           >
             <Link to="/">About</Link>
           </li>
           <li
             style={{ borderRadius: "5px" }}
-            className="text-white hover:bg-gray-dark px-3 py-3"
+            className="hover:scale-150 transition-transform px-3 py-3"
           >
             <Link to="/">Contact</Link>
           </li>

@@ -5,9 +5,9 @@ import InputField from "../InputField";
 const FirstForm = ({ errors, register }) => {
   return (
     <div className="md:w-full rounded-md ">
-      <form
+      <div
         style={{ borderRadius: "10px" }}
-        className=" w-full bg-white rounded-md  flex-col p-5"
+        className=" w-full bg-wood rounded-md  flex-col p-5"
       >
         <InputField name={"country"} register={register} errors={errors} />
 
@@ -19,13 +19,13 @@ const FirstForm = ({ errors, register }) => {
 
         <InputField name={"postalCode"} register={register} errors={errors} />
 
-        <h3 className="text-center">
+        <h3 className="text-center text-white">
           Already Have An Account?{" "}
-          <Link style={{ color: "blue" }} to={"/"}>
+          <Link style={{ color: "blue" }} to={"/signIn"}>
             Sign In
           </Link>
         </h3>
-      </form>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import InputField from "../InputField";
 const FirstForm = ({ errors, register }) => {
   return (
     <div className="md:w-full rounded-md flex">
-      <form className=" w-full bg-white rounded-md  flex-col p-5">
+      <div className=" w-full bg-wood rounded-md  flex-col p-5">
         <InputField name={"fullName"} register={register} errors={errors} />
 
         <InputField name={"userName"} register={register} errors={errors} />
@@ -28,13 +28,13 @@ const FirstForm = ({ errors, register }) => {
           type="password"
         />
 
-        <h3 className="text-center">
+        <h3 className="text-center text-white">
           Already Have An Account?{" "}
-          <Link style={{ color: "blue" }} to={"/"}>
+          <Link style={{ color: "blue" }} to={"/signIn"}>
             Sign In
           </Link>
         </h3>
-      </form>
+      </div>
     </div>
   );
 };

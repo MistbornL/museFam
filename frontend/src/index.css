@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #120818;
-  background-image: url("./assets/cosmonaut.png");
+  background-image: url("./assets/manfem.png");
   background-size: cover;
   /* background-position: center; */
   background-repeat: no-repeat;
@@ -19,6 +19,12 @@ body {
 @font-face {
   font-family: "space";
   src: local("Space"), url("./fonts/Space/Space.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway"),
+    url("./fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf")
+      format("truetype");
 }
 
 code {

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Navbar } from "../Navigation/Navbar";
 import { formSchemaLogin } from "../components/Schema/formSchemaLogin";
+import { motion } from "framer-motion";
+import { handleLogin } from "../api/handleLogin";
 
 export const SignIn = () => {
   const formOptions = { resolver: yupResolver(formSchemaLogin) };
@@ -14,12 +16,19 @@ export const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
+
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
+    handleLogin(data, navigate);
   };
 
   return (
-    <div className="App">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="App"
+    >
       <header>
         <Navbar />
       </header>
@@ -28,24 +37,27 @@ export const SignIn = () => {
           <div className="container h-100 mt-5 bg:dark">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div style={{ borderRadius: "15px" }} className="card p-5">
+                <div
+                  style={{ borderRadius: "15px" }}
+                  className="card bg-wood p-5"
+                >
                   <div className="card-body ">
                     <h2 className="text-uppercase text-center mb5">Log In</h2>
                   </div>
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-outline mb-4">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email">Username</label>
                       <input
-                        {...register("email")}
+                        {...register("userName")}
                         className={`form-control ${
                           errors.email ? "is-invalid" : ""
                         }`}
-                        placeholder="Email"
+                        placeholder="username"
                         type="text"
                       />
                       <div className="invalid-feedback">
-                        {errors.email && errors.email.message}
+                        {errors.userName && errors.userName.message}
                       </div>
                     </div>
 
@@ -74,9 +86,9 @@ export const SignIn = () => {
                     </div>
                     <p className="text-center text-muted mt-5 mb-0">
                       Don't have an account?{" "}
-                      <a href="/signup" className="fw-bold text-body">
+                      <Link to="/signup" className="fw-bold text-body">
                         <u>Sign Up here</u>
-                      </a>
+                      </Link>
                     </p>
                   </form>
                 </div>
@@ -85,6 +97,6 @@ export const SignIn = () => {
           </div>
         </section>
       </main>
-    </div>
+    </motion.div>
   );
 };

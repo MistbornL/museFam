@@ -19,4 +19,5 @@ export const formSchemaPersonal = Yup.object().shape({
   postalCode: Yup.string().required("Postal code is required"),
   country: Yup.string().required("Country code is required"),
   city: Yup.string().required("City code is required"),
+  date: Yup.string().required("Date is required"),
 });
