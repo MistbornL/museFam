@@ -2,11 +2,12 @@ import React from "react";
 import { StylesManager, Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/defaultV2.css";
+import "./survey.scss";
 
 import { model } from "./model";
 import { Navbar } from "../../Navigation/Navbar";
 StylesManager.applyTheme("defaultV2");
-function Survey() {
+function SurveyQuest() {
   const survey = new Model(model);
 
   survey.onComplete.add(function (result) {
@@ -24,4 +25,4 @@ function Survey() {
     </div>
   );
 }
-export default Survey;
+export default SurveyQuest;
