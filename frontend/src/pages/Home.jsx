@@ -18,22 +18,41 @@ export const Home = () => {
         <Navbar />
       </header>
       <main className="flex justify-end mt-40  md:mr-40">
-        <div className="container  ">
-          <h1 className="text-white text-5xl">Landing Page</h1>
-          <p className="text-white w-80 mt-7">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
-            exercitationem libero iusto similique, facere minima veniam iste
-            quasi accusamus quo porro ducimus aspernatur. Illo corrupti amet,
-            autem nihil dolor sit?
-          </p>
+        {!token ? (
+          <div className="container  ">
+            <h1 className="text-white text-5xl">Landing Page</h1>
+            <p className="text-white w-80 mt-7">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
+              exercitationem libero iusto similique, facere minima veniam iste
+              quasi accusamus quo porro ducimus aspernatur. Illo corrupti amet,
+              autem nihil dolor sit?
+            </p>
 
-          <button
-            onClick={() => navigate("/signUp")}
-            className="bg-white  rounded-lg md:w-40 mt-7 h-10 mix-blend-screen"
-          >
-            Dive In
-          </button>
-        </div>
+            <button
+              onClick={() => navigate("/signUp")}
+              className="bg-white  rounded-lg md:w-40 mt-7 h-10 mix-blend-screen"
+            >
+              Dive In
+            </button>
+          </div>
+        ) : (
+          <div className="container  ">
+            <h1 className="text-white text-5xl">Take Survey</h1>
+            <p className="text-white w-80 mt-7">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
+              exercitationem libero iusto similique, facere minima veniam iste
+              quasi accusamus quo porro ducimus aspernatur. Illo corrupti amet,
+              autem nihil dolor sit?
+            </p>
+
+            <button
+              onClick={() => navigate("/survey")}
+              className="bg-white  rounded-lg md:w-40 mt-7 h-10 mix-blend-screen"
+            >
+              Quiz
+            </button>
+          </div>
+        )}
       </main>
     </motion.div>
   );
