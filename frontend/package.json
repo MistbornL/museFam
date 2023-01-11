@@ -24,6 +24,7 @@
     "react-hook-form": "^7.41.3",
     "react-router-dom": "^6.6.1",
     "sass": "^1.57.1",
+    "survey-react-ui": "^1.9.68",
     "yup": "^0.32.11"
   },
   "devDependencies": {

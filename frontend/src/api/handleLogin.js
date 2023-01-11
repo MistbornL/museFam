@@ -13,9 +13,11 @@ export const handleLogin = async (data, navigate) => {
     });
 
     if (response.status === 200) {
+      localStorage.setItem("token", response.data.access_token);
       console.log(response.data);
     }
   } catch (error) {
+    alert("something went wrong");
     console.error(error);
   }
 };

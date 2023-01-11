@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { Home } from "../pages/Home";
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
+import { Survey } from "survey-react-ui";
 
 export const AnimatedRoutes = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ export const AnimatedRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/survey" element={<Survey />} />
       </Routes>
     </AnimatePresence>
   );

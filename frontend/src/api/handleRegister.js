@@ -25,6 +25,7 @@ export const handleRegister = async (data, navigate) => {
       alert("username already exists");
     }
   } catch (error) {
+    alert("something went wrong");
     console.error(error);
   }
 };

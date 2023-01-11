@@ -5,6 +5,8 @@ import { Navbar } from "../Navigation/Navbar";
 
 export const Home = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
