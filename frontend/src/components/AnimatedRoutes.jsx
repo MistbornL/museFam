@@ -5,8 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { Home } from "../pages/Home";
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
-
-import SurveyQuest from "./survey/Survey";
+import SurveyQuest from "../pages/survey/Survey";
 
 export const AnimatedRoutes = () => {
   const location = useLocation();

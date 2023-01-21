@@ -22,7 +22,6 @@ export const SignUp = () => {
   const {
     register,
     handleSubmit,
-    clearErrors,
     formState: { errors },
   } = useForm(formOptions);
   const formLength = formList.length;
