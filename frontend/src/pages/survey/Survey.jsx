@@ -9,6 +9,7 @@ import InputField from "../../components/InputField";
 import { useEffect } from "react";
 import { handleQuestions } from "../../api/handleQuestions";
 import { handleAnswers } from "../../api/handleAnswers";
+import { LoadingSpinner } from "../../components/LoadingSpinner ";
 
 function SurveyQuest() {
   const formOptions = {
@@ -23,46 +24,56 @@ function SurveyQuest() {
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState("");
 
-  const onSubmit = (data) => {
-    console.log("Form submitted: ", Object.values(data));
-    handleAnswers(data, questions, setFormSubmitted, setResult);
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     handleQuestions(setQuestions);
+    setIsLoading(false);
   }, []);
+
+  const onSubmit = (data) => {
+    setIsLoading(true);
+    handleAnswers(data, questions, setFormSubmitted, setResult, setIsLoading);
+  };
 
   return (
     <div className="App">
-      <header>
-        <Navbar />
-      </header>
-      <main className="flex rounded-2xl w-full justify-center">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {formSubmitted ? (
-            <div className="text-white">
-              Congratulations You Are Assigned to {result}
-            </div>
-          ) : (
-            <>
-              {questions.map((question, index) => (
-                <fieldset key={index}>
-                  <legend className="text-white">{question.prompt}</legend>
-                  <InputField
-                    no={index + 1}
-                    key={index}
-                    options={question.answers}
-                    type="radio"
-                    register={register}
-                    errors={errors}
-                  />
-                </fieldset>
-              ))}
-              <button className="btn btn-primary">submit</button>
-            </>
-          )}
-        </form>
-      </main>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <header>
+            <Navbar />
+          </header>
+          <main className="flex rounded-2xl w-full justify-center">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              {formSubmitted ? (
+                <div className="text-white">
+                  Congratulations You Are Assigned to {result}
+                </div>
+              ) : (
+                <>
+                  {questions.map((question, index) => (
+                    <fieldset key={index}>
+                      <legend className="text-white">{question.prompt}</legend>
+                      <InputField
+                        no={index + 1}
+                        key={index}
+                        options={question.answers}
+                        type="radio"
+                        register={register}
+                        errors={errors}
+                      />
+                    </fieldset>
+                  ))}
+                  <button className="btn btn-primary">submit</button>
+                </>
+              )}
+            </form>
+          </main>
+        </>
+      )}
     </div>
   );
 }

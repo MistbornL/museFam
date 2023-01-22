@@ -3,10 +3,12 @@ import React from "react";
 export const LoadingSpinner = () => {
   return (
     <div
-      class="spinner-border text-danger d-flex justify-content-center"
+      className="spinner-border text-danger d-flex text-center items-center justify-content-center"
       role="status"
     >
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only flex justify-center text-center">
+        Loading...
+      </span>
     </div>
   );
 };

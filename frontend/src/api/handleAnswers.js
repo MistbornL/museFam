@@ -5,7 +5,8 @@ export const handleAnswers = async (
   data,
   questions,
   setFormSubmitted,
-  setResult
+  setResult,
+  setIsLoading
 ) => {
   var dataToSend = [];
   const answers = Object.values(data);
@@ -19,6 +20,7 @@ export const handleAnswers = async (
     );
     if (response.status === 200) {
       setFormSubmitted(true);
+      setIsLoading(false);
       console.log(response.data);
       setResult(response.data.title);
     }
