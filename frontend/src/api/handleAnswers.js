@@ -1,7 +1,12 @@
 import axios from "axios";
 import { handleLogin } from "./handleLogin";
 
-export const handleAnswers = async (data, questions, setFormSubmitted) => {
+export const handleAnswers = async (
+  data,
+  questions,
+  setFormSubmitted,
+  setResult
+) => {
   var dataToSend = [];
   const answers = Object.values(data);
   for (let i = 0; i < questions.length; i++) {
@@ -15,6 +20,7 @@ export const handleAnswers = async (data, questions, setFormSubmitted) => {
     if (response.status === 200) {
       setFormSubmitted(true);
       console.log(response.data);
+      setResult(response.data.title);
     }
   } catch (error) {
     alert("something went wrong");

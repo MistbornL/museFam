@@ -20,13 +20,14 @@ function SurveyQuest() {
     formState: { errors },
   } = useForm(formOptions);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [result, setResult] = useState("");
 
   const onSubmit = (data) => {
     console.log("Form submitted: ", Object.values(data));
-    handleAnswers(data, questions, setFormSubmitted);
+    handleAnswers(data, questions, setFormSubmitted, setResult);
   };
 
-  const [questions, setQuestions] = useState([]);
   useEffect(() => {
     handleQuestions(setQuestions);
   }, []);
@@ -39,7 +40,9 @@ function SurveyQuest() {
       <main className="flex rounded-2xl w-full justify-center">
         <form onSubmit={handleSubmit(onSubmit)}>
           {formSubmitted ? (
-            <div className="text-white">Thank you for submitting the form!</div>
+            <div className="text-white">
+              Congratulations You Are Assigned to {result}
+            </div>
           ) : (
             <>
               {questions.map((question, index) => (
