@@ -9,8 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #120818;
-  background-image: url("./assets/manfem.png");
+  background-color: rgb(18, 12, 45);
+  /* background-image: url("./assets/manfem.png"); */
   background-size: cover;
   /* background-position: center; */
   background-repeat: no-repeat;
@@ -25,6 +25,11 @@ body {
   src: local("Raleway"),
     url("./fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf")
       format("truetype");
+}
+@font-face {
+  font-family: "Alpino";
+  src: local("Alpino"),
+    url("./fonts/Alpino/Fonts/OTF/Alpino-Medium.otf") format("truetype");
 }
 
 code {

@@ -46,8 +46,8 @@ function SurveyQuest() {
           <header>
             <Navbar />
           </header>
-          <main className="flex rounded-2xl w-full justify-center">
-            <form onSubmit={handleSubmit(onSubmit)}>
+          <main className="flex rounded-2xl w-full justify-center ">
+            <form className="p-3" onSubmit={handleSubmit(onSubmit)}>
               {formSubmitted ? (
                 <div className="text-white">
                   Congratulations You Are Assigned to {result}
@@ -55,7 +55,7 @@ function SurveyQuest() {
               ) : (
                 <>
                   {questions.map((question, index) => (
-                    <fieldset key={index}>
+                    <fieldset className="font-medium" key={index}>
                       <legend className="text-white">{question.prompt}</legend>
                       <InputField
                         no={index + 1}
@@ -67,7 +67,17 @@ function SurveyQuest() {
                       />
                     </fieldset>
                   ))}
-                  <button className="btn btn-primary">submit</button>
+
+                  <button
+                    style={{
+                      boxShadow: "0px 4px 34px 4px rgba(64, 117, 255, 0.3)",
+                      border: "1px solid #4075FF",
+                    }}
+                    type="submit"
+                    className=" bg-blue text-white px-7 py-2 rounded-lg "
+                  >
+                    submit
+                  </button>
                 </>
               )}
             </form>

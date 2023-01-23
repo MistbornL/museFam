@@ -21,11 +21,9 @@ export const handleRegister = async (data, navigate) => {
     if (response.status === 200) {
       handleLogin(data, navigate);
       console.log(response.data);
-    } else if (response.status === 409) {
-      alert("username already exists");
     }
   } catch (error) {
-    alert("something went wrong");
+    alert(error.response.data.detail);
     console.error(error);
   }
 };

@@ -17,11 +17,11 @@ export const Home = () => {
       <header>
         <Navbar />
       </header>
-      <main className="flex justify-end mt-40  md:mr-40">
+      <main className="flex  justify-center items-center text-center  mt-40  ">
         {!token ? (
           <div className="container  ">
-            <h1 className="text-white text-5xl">Landing Page</h1>
-            <p className="text-white w-80 mt-7">
+            <h1 className=" text-5xl">Landing Page</h1>
+            <p className=" w-80 mt-7">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
               exercitationem libero iusto similique, facere minima veniam iste
               quasi accusamus quo porro ducimus aspernatur. Illo corrupti amet,
@@ -36,9 +36,9 @@ export const Home = () => {
             </button>
           </div>
         ) : (
-          <div className="container  ">
+          <div className="container w-144 ">
             <h1 className="text-white text-5xl">Take Survey</h1>
-            <p className="text-white w-80 mt-7">
+            <p className="text-white flex mt-7 text-2xl">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
               exercitationem libero iusto similique, facere minima veniam iste
               quasi accusamus quo porro ducimus aspernatur. Illo corrupti amet,

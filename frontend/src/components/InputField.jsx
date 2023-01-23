@@ -14,8 +14,9 @@ const InputField = ({
       {type === "radio" ? (
         options.map((option, index) => {
           return (
-            <div className="text-white" key={index}>
+            <div className="text-white text-2xl flex gap-3" key={index}>
               <input
+                className="form-check-input flex "
                 {...register(`question${no}`)}
                 type="radio"
                 value={option}
