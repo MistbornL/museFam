@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useForm } from "react-hook-form";
 import "./survey.scss";
 import { Navbar } from "../../Navigation/Navbar";
@@ -53,7 +53,10 @@ function SurveyQuest() {
                   Congratulations You Are Assigned to {result}
                 </div>
               ) : (
-                <>
+                <div
+                  style={{ background: "rgb(18,8,25)" }}
+                  className="  rounded-lg p-4"
+                >
                   {questions.map((question, index) => (
                     <fieldset className="font-medium" key={index}>
                       <legend className="text-white">{question.prompt}</legend>
@@ -78,7 +81,7 @@ function SurveyQuest() {
                   >
                     submit
                   </button>
-                </>
+                </div>
               )}
             </form>
           </main>
