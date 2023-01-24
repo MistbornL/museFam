@@ -31,14 +31,7 @@ export const SignUp = () => {
   const handlePrev = () => {
     setPage(page === 0 ? formLength - 1 : page - 1);
   };
-  const handleNext = () => {
-    if (Object.keys(errors).length === 6 && page === 0) {
-      console.log(errors);
-      setPage(page === formLength - 1 ? 0 : page + 1);
-    } else if (page === 1 && Object.keys(errors).length === 1) {
-      setPage(page === formLength - 1 ? 0 : page + 1);
-    }
-  };
+  const handleNext = () => {};
 
   const handleForms = () => {
     switch (page) {
@@ -62,9 +55,10 @@ export const SignUp = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 100 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className="App"
     >
       <header>
@@ -75,7 +69,7 @@ export const SignUp = () => {
           onSubmit={handleSubmit(onSubmit)}
           className=" flex-col md:w-144  gap-4 place-content-center items-center  place-items-center "
         >
-          <ul className="flex justify-between md:w-full  ">
+          <ul className="flex justify-between md:w-full  mt-8">
             {steps.map((step, index) => {
               return (
                 <li key={index}>
@@ -84,7 +78,7 @@ export const SignUp = () => {
               );
             })}
           </ul>
-          <div className="flex justify-center w-full rounded-2x">
+          <div className=" flex justify-center w-full rounded-2x">
             {handleForms()}
           </div>
           <div className="grid grid-cols-2 gap-4 place-content-center items-center">

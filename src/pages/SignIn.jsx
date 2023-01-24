@@ -24,9 +24,10 @@ export const SignIn = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 100 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className="App"
     >
       <header>
@@ -34,13 +35,10 @@ export const SignIn = () => {
       </header>
       <main>
         <section>
-          <div className="container h-100 mt-5 bg:dark">
+          <div className="container h-100 mt-5">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div
-                  style={{ borderRadius: "15px" }}
-                  className="card bg-wood p-5"
-                >
+                <div style={{ borderRadius: "15px" }} className="  p-5">
                   <div className="card-body ">
                     <h2 className="text-uppercase text-center mb5">Log In</h2>
                   </div>
@@ -79,7 +77,7 @@ export const SignIn = () => {
                     <div className="d-flex justify-content-center">
                       <button
                         type="submit"
-                        className="btn btn-primary btn-block btn-lg gradient-custom-4 text-body"
+                        className="btn btn-primary btn-block btn-lg text-white gradient-custom-4 text-body"
                       >
                         Login
                       </button>

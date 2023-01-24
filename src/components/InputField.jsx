@@ -10,7 +10,7 @@ const InputField = ({
   holder = name,
 }) => {
   return (
-    <div className="form-outline mb-4">
+    <div className="form-outline mb-2">
       {type === "radio" ? (
         options.map((option, index) => {
           return (
@@ -36,7 +36,9 @@ const InputField = ({
           <input
             {...register(name)}
             id="form"
-            className={`form-control  ${errors.name ? "is-invalid" : ""}`}
+            className={`form-control rounded-lg  ${
+              errors.name ? "is-invalid" : ""
+            }`}
             placeholder={holder}
             type={type}
           />

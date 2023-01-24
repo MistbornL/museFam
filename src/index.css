@@ -9,8 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(18, 12, 45);
-  /* background-image: url("./assets/manfem.png"); */
+  background-color: rgb(16, 10, 38);
+  background-image: url("./assets/bg.png");
   background-size: cover;
   /* background-position: center; */
   background-repeat: no-repeat;

@@ -5,7 +5,7 @@ import InputField from "../InputField";
 const FirstForm = ({ errors, register }) => {
   return (
     <div className="md:w-full rounded-md flex">
-      <div className=" w-full bg-wood rounded-md  flex-col p-5">
+      <div className=" w-full rounded-md  flex-col p-5">
         <InputField name={"fullName"} register={register} errors={errors} />
 
         <InputField name={"userName"} register={register} errors={errors} />

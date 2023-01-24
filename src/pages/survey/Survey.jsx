@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import "./survey.scss";
 import { Navbar } from "../../Navigation/Navbar";
@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { handleQuestions } from "../../api/handleQuestions";
 import { handleAnswers } from "../../api/handleAnswers";
 import { LoadingSpinner } from "../../components/LoadingSpinner ";
+import { motion } from "framer-motion";
 
 function SurveyQuest() {
   const formOptions = {
@@ -23,7 +24,6 @@ function SurveyQuest() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,13 @@ function SurveyQuest() {
   };
 
   return (
-    <div className="App">
+    <motion.div
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 100 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="App"
+    >
       {isLoading ? (
         <LoadingSpinner />
       ) : (
@@ -53,10 +59,7 @@ function SurveyQuest() {
                   Congratulations You Are Assigned to {result}
                 </div>
               ) : (
-                <div
-                  style={{ background: "rgb(18,8,25)" }}
-                  className="  rounded-lg p-4"
-                >
+                <div className="  rounded-lg p-4">
                   {questions.map((question, index) => (
                     <fieldset className="font-medium" key={index}>
                       <legend className="text-white">{question.prompt}</legend>
@@ -77,7 +80,7 @@ function SurveyQuest() {
                       border: "1px solid #4075FF",
                     }}
                     type="submit"
-                    className=" bg-blue text-white px-7 py-2 rounded-lg "
+                    className="mt-3 bg-blue text-white px-7 py-2 rounded-lg "
                   >
                     submit
                   </button>
@@ -87,7 +90,7 @@ function SurveyQuest() {
           </main>
         </>
       )}
-    </div>
+    </motion.div>
   );
 }
 export default SurveyQuest;

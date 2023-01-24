@@ -1,26 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import glow from "../assets/glow.png";
 import MenuItems from "../components/MenuItems";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
-  const token = localStorage.getItem("token");
-  const navItems = [
-    "home",
-    "testimonials",
-    "information",
-    "jobs",
-    "about",
-    "contact",
-  ];
+  const token = Cookies.get("token");
+  const navItems = ["testimonials", "information", "jobs", "about", "contact"];
 
   const showMenu = () => {
     setActive(!active);
   };
 
   return (
-    <div className="w-full text-white flex justify-center px-4 items-center">
+    <div className="w-full text-white flex justify-center p-4 items-center">
       <nav className="bg-black rounded-4xl justify-end flex items-center">
         <div className="absolute right-6 md:hidden top-6 scale-150">
           {/* <FontAwesomeIcon
@@ -30,10 +25,11 @@ export const Navbar = () => {
           /> */}
         </div>
 
-        <ul className=" hidden text-2xl md:flex gap-8 p-6  items-center">
-          <Link to={"/"} className="text-4xl ">
+        <ul className=" hidden text-xl md:flex gap-8 p-3 items-center">
+          <Link to={"/"} className="text-2xl ">
             MuseFam
           </Link>
+
           {navItems.map((item, index) => {
             return (
               <li
@@ -49,14 +45,14 @@ export const Navbar = () => {
 
         <div className="w-96 flex justify-end text-xl gap-10 px-5">
           {token ? (
-            <Link onClick={() => localStorage.clear()} to={"/"}>
+            <Link onClick={() => Cookies.remove("token")} to={"/"}>
               Logout
             </Link>
           ) : (
             <>
               {" "}
-              <Link to={"/signUp"}>Sign Up</Link>
               <Link to={"/signIn"}>Sign In</Link>
+              <Link to={"/signUp"}>Sign Up</Link>
             </>
           )}
         </div>

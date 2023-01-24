@@ -1,0 +1,22 @@
+li {
+  font-family: "Alpino";
+}
+
+h1 {
+  font-family: "Alpino";
+}
+
+p {
+  font-family: "Alpino";
+}
+.dive {
+  border: 1px solid #ff40af;
+  background: rgba(2, 9, 26, 0.3);
+  box-shadow: 0px 6px 34px 20px rgba(243, 47, 161, 0.3);
+  border-radius: 10px;
+}
+/* .main {
+  background-image: url("assets/account.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */

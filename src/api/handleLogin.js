@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const handleLogin = async (data, navigate) => {
   const dat = new URLSearchParams();
@@ -13,11 +14,16 @@ export const handleLogin = async (data, navigate) => {
     });
 
     if (response.status === 200) {
-      localStorage.setItem("token", response.data.access_token);
+      // Setting the token in a cookie
+      console.log(response.data.access_token);
+      Cookies.set("token", JSON.stringify(response.data.access_token), {
+        expires: 1,
+      });
+      console.log(Cookies.get("token"));
       navigate("/");
     }
   } catch (error) {
-    alert("something went wrong");
-    console.error(error);
+    alert(error.response.data.detail);
+    console.error(error.response.data.detail);
   }
 };

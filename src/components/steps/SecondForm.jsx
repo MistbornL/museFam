@@ -7,7 +7,7 @@ const FirstForm = ({ errors, register }) => {
     <div className="md:w-full rounded-md ">
       <div
         style={{ borderRadius: "10px" }}
-        className=" w-full bg-wood rounded-md  flex-col p-5"
+        className=" w-full  rounded-md  flex-col p-5"
       >
         <InputField name={"country"} register={register} errors={errors} />
 
