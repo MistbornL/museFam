@@ -33,9 +33,6 @@ export const SignIn = () => {
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="App"
     >
-      <header>
-        <Navbar />
-      </header>
       <main>
         <section>
           <div className="container h-100 mt-5">

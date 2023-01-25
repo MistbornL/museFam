@@ -49,9 +49,7 @@ function SurveyQuest() {
         <LoadingSpinner />
       ) : (
         <>
-          <header>
-            <Navbar />
-          </header>
+          <header></header>
           <main className="flex rounded-2xl w-full justify-center ">
             <form className="p-3" onSubmit={handleSubmit(onSubmit)}>
               {formSubmitted ? (

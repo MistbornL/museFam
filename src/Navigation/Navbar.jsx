@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import glow from "../assets/glow.png";
+import { faB, faBars } from "@fortawesome/free-solid-svg-icons";
 import MenuItems from "../components/MenuItems";
 
 export const Navbar = () => {
@@ -15,20 +15,21 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="w-full text-white flex justify-center p-4 items-center">
-      <nav className="bg-black rounded-4xl justify-end flex items-center">
-        <div className="absolute right-6 md:hidden top-6 scale-150">
+    <div className=" text-white flex justify-center p-4 items-center">
+      <nav className="absolute bg-black rounded-4xl justify-end flex items-center  ">
+        <div className=" right-6 md:hidden top-6 scale-150">
           <FontAwesomeIcon
-            icon={"fa-xmark"}
+            icon={faBars}
             onClick={showMenu}
-            className="scale-150 cursor-pointer"
+            color="white"
+            className="cursor-pointer"
           />
         </div>
-        <Link to={"/"} className="text-2xl items-center ml-5">
+        <Link to={"/"} className="hidden md:flex text-2xl items-center ml-5">
           MuseFam
         </Link>
 
-        <ul className=" hidden text-xl md:flex gap-8 p-3 items-center">
+        <ul className=" md:flex hidden text-xl gap-8 p-3 items-center">
           {navItems.map((item, index) => {
             return (
               <li
@@ -55,7 +56,12 @@ export const Navbar = () => {
           </div>
         </ul>
 
-        <MenuItems showMenu={showMenu} active={active} />
+        <MenuItems
+          showMenu={showMenu}
+          token={token}
+          active={active}
+          navItems={navItems}
+        />
       </nav>
     </div>
   );

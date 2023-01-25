@@ -49,8 +49,10 @@ export const SignUp = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    setLoading(true);
     handleRegister(data, navigate);
+    setLoading(true);
   };
 
   return (
@@ -61,9 +63,6 @@ export const SignUp = () => {
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="App"
     >
-      <header>
-        <Navbar />
-      </header>
       <main className="flex justify-center  md:flex ">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -94,7 +93,19 @@ export const SignUp = () => {
                 type="submit"
                 className="bg-blue-200 hover:bg-blue-300 rounded-md text-gray-800 font-bold py-2 px-4 "
               >
-                Submit
+                {loading ? (
+                  <>
+                    <div className="flex gap-3">
+                      <div
+                        className=" spinner-border text-primary"
+                        role="status"
+                      ></div>
+                      Processing...
+                    </div>
+                  </>
+                ) : (
+                  "Submit"
+                )}
               </button>
             ) : (
               <button
