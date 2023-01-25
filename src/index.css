@@ -16,6 +16,12 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+@media (max-width: 720px) {
+  body {
+    background-image: url("./assets/small.png");
+  }
+}
 @font-face {
   font-family: "space";
   src: local("Space"), url("./fonts/Space/Space.ttf") format("truetype");

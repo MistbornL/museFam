@@ -18,18 +18,17 @@ export const Navbar = () => {
     <div className="w-full text-white flex justify-center p-4 items-center">
       <nav className="bg-black rounded-4xl justify-end flex items-center">
         <div className="absolute right-6 md:hidden top-6 scale-150">
-          {/* <FontAwesomeIcon
+          <FontAwesomeIcon
             icon={"fa-xmark"}
             onClick={showMenu}
             className="scale-150 cursor-pointer"
-          /> */}
+          />
         </div>
+        <Link to={"/"} className="text-2xl items-center ml-5">
+          MuseFam
+        </Link>
 
         <ul className=" hidden text-xl md:flex gap-8 p-3 items-center">
-          <Link to={"/"} className="text-2xl ">
-            MuseFam
-          </Link>
-
           {navItems.map((item, index) => {
             return (
               <li
@@ -41,21 +40,20 @@ export const Navbar = () => {
               </li>
             );
           })}
+          <div className=" w-96 flex justify-end text-xl gap-10 px-5">
+            {token ? (
+              <Link onClick={() => Cookies.remove("token")} to={"/"}>
+                Logout
+              </Link>
+            ) : (
+              <>
+                {" "}
+                <Link to={"/signIn"}>Sign In</Link>
+                <Link to={"/signUp"}>Sign Up</Link>
+              </>
+            )}
+          </div>
         </ul>
-
-        <div className="w-96 flex justify-end text-xl gap-10 px-5">
-          {token ? (
-            <Link onClick={() => Cookies.remove("token")} to={"/"}>
-              Logout
-            </Link>
-          ) : (
-            <>
-              {" "}
-              <Link to={"/signIn"}>Sign In</Link>
-              <Link to={"/signUp"}>Sign Up</Link>
-            </>
-          )}
-        </div>
 
         <MenuItems showMenu={showMenu} active={active} />
       </nav>

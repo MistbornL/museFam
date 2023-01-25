@@ -31,7 +31,7 @@ export const Home = () => {
             </p>
             <button
               onClick={() => navigate("/signUp")}
-              className="text-white dive rounded-lg bg md:w-40 mt-7 h-10 mix-blend-screen"
+              className="text-white dive rounded-lg bg w-40 mt-7 h-10 mix-blend-screen"
             >
               Dive In
             </button>

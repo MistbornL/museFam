@@ -10,6 +10,7 @@ import { handleLogin } from "../api/handleLogin";
 
 export const SignIn = () => {
   const formOptions = { resolver: yupResolver(formSchemaLogin) };
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -18,8 +19,10 @@ export const SignIn = () => {
   } = useForm(formOptions);
 
   const navigate = useNavigate();
-  const onSubmit = (data) => {
-    handleLogin(data, navigate);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    await handleLogin(data, navigate);
+    setLoading(false);
   };
 
   return (
@@ -40,10 +43,15 @@ export const SignIn = () => {
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
                 <div style={{ borderRadius: "15px" }} className="  p-5">
                   <div className="card-body ">
-                    <h2 className="text-uppercase text-center mb5">Log In</h2>
+                    <h2 className="text-uppercase text-center text-white mb5">
+                      Log In
+                    </h2>
                   </div>
 
-                  <form onSubmit={handleSubmit(onSubmit)}>
+                  <form
+                    className="text-white "
+                    onSubmit={handleSubmit(onSubmit)}
+                  >
                     <div className="form-outline mb-4">
                       <label htmlFor="email">Username</label>
                       <input
@@ -74,12 +82,24 @@ export const SignIn = () => {
                       </div>
                     </div>
 
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center ">
                       <button
                         type="submit"
-                        className="btn btn-primary btn-block btn-lg text-white gradient-custom-4 text-body"
+                        className="rounded-2xl px-7 py-3 hover:text-black hover:bg-gray-light  border "
                       >
-                        Login
+                        {loading ? (
+                          <>
+                            <div className="flex gap-3">
+                              <div
+                                className=" spinner-border text-primary"
+                                role="status"
+                              ></div>
+                              Processing...
+                            </div>
+                          </>
+                        ) : (
+                          "Login"
+                        )}
                       </button>
                     </div>
                     <p className="text-center text-muted mt-5 mb-0">
