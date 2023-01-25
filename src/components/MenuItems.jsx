@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
 const MenuItems = ({ showMenu, token, active, navItems }) => {
   return (
     <motion.div
@@ -14,11 +15,14 @@ const MenuItems = ({ showMenu, token, active, navItems }) => {
       <div className="bg-black h-full w-full fixed top-0 left-0">
         <div className="px-5 py-5">
           <ul className="text-xl text-white gap-8">
+            <li className="hover:scale-150 transition-transform px-3 py-3 ">
+              <Link to={`/`}>Home</Link>
+            </li>
             {navItems.map((item, index) => {
               return (
                 <li
                   key={index}
-                  className=" hover:scale-150 transition-transform px-3 py-3 "
+                  className="hover:scale-150 transition-transform px-3 py-3 "
                 >
                   <Link to={`/${item}`}>{item}</Link>
                 </li>
@@ -29,7 +33,13 @@ const MenuItems = ({ showMenu, token, active, navItems }) => {
         <div className="px-5">
           <div className="w-full flex justify-end text-xl gap-10 px-5">
             {token ? (
-              <Link onClick={() => Cookies.remove("token")} to={"/"}>
+              <Link
+                onClick={() => {
+                  Cookies.remove("token");
+                  console.log(Cookies("token"));
+                }}
+                to={"/"}
+              >
                 Logout
               </Link>
             ) : (

@@ -25,7 +25,10 @@ export const Navbar = () => {
             className="cursor-pointer"
           />
         </div>
-        <Link to={"/"} className="hidden md:flex text-2xl items-center ml-5">
+        <Link
+          to={"/"}
+          className="hidden md:flex text-2xl text-gray-light items-center ml-5 mr-3 mb-1"
+        >
           MuseFam
         </Link>
 

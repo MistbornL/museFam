@@ -99,9 +99,9 @@ export const SignIn = () => {
                         )}
                       </button>
                     </div>
-                    <p className="text-center text-muted mt-5 mb-0">
+                    <p className="text-center text-white mt-5 mb-0">
                       Don't have an account?{" "}
-                      <Link to="/signup" className="fw-bold text-body">
+                      <Link to="/signup" className="fw-bold text-blue">
                         <u>Sign Up here</u>
                       </Link>
                     </p>

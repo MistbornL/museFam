@@ -7,6 +7,7 @@ import { Navbar } from "../Navigation/Navbar";
 export const Home = () => {
   const navigate = useNavigate();
   const token = Cookies.get("token");
+  console.log(token);
 
   return (
     <motion.div
