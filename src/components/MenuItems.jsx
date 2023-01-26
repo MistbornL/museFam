@@ -33,15 +33,18 @@ const MenuItems = ({ showMenu, token, active, navItems }) => {
         <div className="px-5">
           <div className="w-full flex justify-end text-xl gap-10 px-5">
             {token ? (
-              <Link
-                onClick={() => {
-                  Cookies.remove("token");
-                  console.log(Cookies("token"));
-                }}
-                to={"/"}
-              >
-                Logout
-              </Link>
+              <>
+                <Link to={"/account"}>Account</Link>
+                <Link
+                  onClick={() => {
+                    Cookies.remove("token");
+                    console.log(Cookies("token"));
+                  }}
+                  to={"/"}
+                >
+                  Logout
+                </Link>
+              </>
             ) : (
               <>
                 <Link to={"/signIn"}>Sign In</Link>

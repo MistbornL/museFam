@@ -7,6 +7,7 @@ import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
 import SurveyQuest from "../pages/survey/Survey";
 import { Navbar } from "../Navigation/Navbar";
+import { Account } from "../pages/Account";
 
 export const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ export const AnimatedRoutes = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/survey" element={<SurveyQuest />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </AnimatePresence>
   );
