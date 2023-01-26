@@ -8,11 +8,10 @@ import avatar from "../assets/avatar.png";
 export const Account = () => {
   const [account, setAccount] = useState([]);
   const token = Cookies.get("token");
-  // useEffect(() => {
-  //   handleUser(setAccount, token);
-  // }, []);
-  console.log(token);
-  console.log(account);
+  useEffect(() => {
+    handleUser(setAccount, token);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
@@ -21,7 +20,7 @@ export const Account = () => {
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="App"
     >
-      <main className=" text-5xl text-center justify-center mt-28 text-white">
+      <main className=" text-5xl text-center justify-center mt-10 text-white">
         <h1>Keep track of your musical journey</h1>
 
         <div className="container flex text-center justify-center mt-5">

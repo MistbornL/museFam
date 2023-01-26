@@ -16,7 +16,7 @@ export const handleLogin = async (data, navigate) => {
     if (response.status === 200) {
       // Setting the token in a cookie
       console.log(response.data.access_token);
-      Cookies.set("token", JSON.stringify(response.data.access_token), {
+      Cookies.set("token", response.data.access_token, {
         expires: 1,
       });
       console.log(Cookies.get("token"));
