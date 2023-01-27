@@ -8,10 +8,10 @@ import avatar from "../assets/avatar.png";
 export const Account = () => {
   const [account, setAccount] = useState([]);
   const [loading, setLoading] = useState(false);
-  const token = Cookies.get("token");
+
   useEffect(() => {
     setLoading(true);
-    handleUser(setAccount, token);
+    handleUser(setAccount);
     setLoading(false);
   }, []);
 

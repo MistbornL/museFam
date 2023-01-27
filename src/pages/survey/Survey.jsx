@@ -65,7 +65,10 @@ function SurveyQuest() {
       ) : (
         <>
           <main className="flex rounded-2xl w-full justify-center ">
-            <form className="p-3" onSubmit={handleSubmit(onSubmit)}>
+            <form
+              className="p-3 bg-gray-dark"
+              onSubmit={handleSubmit(onSubmit)}
+            >
               {formSubmitted ? (
                 <motion.div
                   className="text-white text-center absolute top-1/2  left-1/2"

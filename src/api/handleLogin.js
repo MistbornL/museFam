@@ -17,9 +17,9 @@ export const handleLogin = async (data, navigate) => {
       // Setting the token in a cookie
       console.log(response.data.access_token);
       Cookies.set("token", response.data.access_token, {
-        expires: 1,
+        expires: 1 / 24,
       });
-      console.log(Cookies.get("token"));
+
       navigate("/");
     }
   } catch (error) {

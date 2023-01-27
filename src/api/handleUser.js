@@ -1,11 +1,12 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
-export const handleUser = async (setAccount, token) => {
+export const handleUser = async (setAccount) => {
   try {
     const response = await axios.get(`https://ouprji.deta.dev/users/me`, {
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${Cookies.get("token")}`,
       },
     });
 

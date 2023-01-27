@@ -7,7 +7,7 @@ import MenuItems from "../components/MenuItems";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
-  const token = Cookies.get("token");
+
   const navItems = ["testimonials", "information", "jobs", "about", "contact"];
 
   const showMenu = () => {
@@ -45,16 +45,15 @@ export const Navbar = () => {
             );
           })}
           <div className=" w-96 flex justify-end text-xl gap-10 px-5">
-            {token ? (
+            {Cookies.get("token") ? (
               <>
                 <Link to={"/account"}>Account</Link>
                 <Link onClick={() => Cookies.remove("token")} to={"/"}>
                   Logout
-                </Link>{" "}
+                </Link>
               </>
             ) : (
               <>
-                {" "}
                 <Link to={"/signIn"}>Sign In</Link>
                 <Link to={"/signUp"}>Sign Up</Link>
               </>
@@ -65,7 +64,6 @@ export const Navbar = () => {
         <MenuItems
           setActive={setActive}
           showMenu={showMenu}
-          token={token}
           active={active}
           navItems={navItems}
         />

@@ -6,8 +6,6 @@ import { Navbar } from "../Navigation/Navbar";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const token = Cookies.get("token");
-  console.log(token);
 
   return (
     <motion.div
@@ -17,8 +15,8 @@ export const Home = () => {
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="App"
     >
-      <main className=" main flex  justify-center items-center text-center  mt-40  ">
-        {!token ? (
+      <main className=" main flex  justify-center items-center text-center mt-20  ">
+        {!Cookies.get("token") ? (
           <div className="container w-144 ">
             <h1 className="text-white text-5xl">Welcome to Musefam</h1>
             <p className="text-white flex mt-7 text-2xl">
