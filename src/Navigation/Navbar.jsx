@@ -63,6 +63,7 @@ export const Navbar = () => {
         </ul>
 
         <MenuItems
+          setActive={setActive}
           showMenu={showMenu}
           token={token}
           active={active}

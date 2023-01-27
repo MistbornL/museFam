@@ -5,7 +5,7 @@ export const handleUser = async (setAccount, token) => {
     const response = await axios.get(`https://ouprji.deta.dev/users/me`, {
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ` + token,
+        Authorization: `Bearer ${token}`,
       },
     });
 

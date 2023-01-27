@@ -630,8 +630,12 @@ video {
   margin-bottom: 0.25rem;
 }
 
-.mt-28 {
-  margin-top: 7rem;
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .mt-40 {
@@ -640,10 +644,6 @@ video {
 
 .mt-7 {
   margin-top: 1.75rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
 }
 
 .mb-4 {
@@ -686,8 +686,8 @@ video {
   height: 2rem;
 }
 
-.h-96 {
-  height: 24rem;
+.h-72 {
+  height: 18rem;
 }
 
 .h-10 {
@@ -708,6 +708,10 @@ video {
 
 .w-96 {
   width: 24rem;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .w-144 {

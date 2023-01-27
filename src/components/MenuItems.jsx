@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
-const MenuItems = ({ showMenu, token, active, navItems }) => {
+const MenuItems = ({ setActive, showMenu, token, active, navItems }) => {
   return (
     <motion.div
       className="fixed top-0 left-0 w-full h-full z-50 overflow-y-auto"
@@ -15,8 +15,13 @@ const MenuItems = ({ showMenu, token, active, navItems }) => {
       <div className="bg-black h-full w-full fixed top-0 left-0">
         <div className="px-5 py-5">
           <ul className="text-xl text-white gap-8">
-            <li className="hover:scale-150 transition-transform px-3 py-3 ">
-              <Link to={`/`}>Home</Link>
+            <li
+              onClick={() => setActive(false)}
+              className="hover:text-pink transition-transform px-3 py-3 "
+            >
+              <Link className="" to={`/`}>
+                Home
+              </Link>
             </li>
             {navItems.map((item, index) => {
               return (
@@ -34,11 +39,14 @@ const MenuItems = ({ showMenu, token, active, navItems }) => {
           <div className="w-full flex justify-end text-xl gap-10 px-5">
             {token ? (
               <>
-                <Link to={"/account"}>Account</Link>
+                <Link onClick={() => setActive(false)} to={"/account"}>
+                  Account
+                </Link>
                 <Link
                   onClick={() => {
                     Cookies.remove("token");
                     console.log(Cookies("token"));
+                    setActive(false);
                   }}
                   to={"/"}
                 >
@@ -47,8 +55,12 @@ const MenuItems = ({ showMenu, token, active, navItems }) => {
               </>
             ) : (
               <>
-                <Link to={"/signIn"}>Sign In</Link>
-                <Link to={"/signUp"}>Sign Up</Link>
+                <Link onClick={() => setActive(false)} to={"/signIn"}>
+                  Sign In
+                </Link>
+                <Link onClick={() => setActive(false)} to={"/signUp"}>
+                  Sign Up
+                </Link>
               </>
             )}
           </div>
