@@ -2,14 +2,22 @@ import { motion } from "framer-motion";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { handleUser } from "../api/handleUser";
 import avatar from "../assets/avatar.png";
 
 export const Account = () => {
   const [account, setAccount] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const token = Cookies.get("token");
 
   useEffect(() => {
+    document.body.classList = "account";
+    if (!token) {
+      navigate("/");
+    }
+
     setLoading(true);
     handleUser(setAccount);
     setLoading(false);

@@ -60,3 +60,8 @@ p {
     transform: scale(1);
   }
 }
+
+.account {
+  background-image: url("./assets/quiz.png");
+  transition: ease-in-out 1.5s;
+}

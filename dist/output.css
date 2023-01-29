@@ -881,11 +881,6 @@ video {
   background-color: rgba(64, 117, 255, 0.3);;
 }
 
-.bg-gray-dark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(39 52 68 / var(--tw-bg-opacity));
-}
-
 .p-5 {
   padding: 1.25rem;
 }
@@ -1054,6 +1049,7 @@ body {
   /* background-position: center; */
   background-repeat: no-repeat;
   background-attachment: fixed;
+  transition: ease-in-out 1.5s;
 }
 
 @media (max-width: 720px) {
@@ -1097,11 +1093,6 @@ code {
 .hover\:bg-gray-light:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(211 220 230 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-pink:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 73 219 / var(--tw-bg-opacity));
 }
 
 .hover\:text-pink:hover {

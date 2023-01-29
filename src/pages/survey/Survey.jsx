@@ -27,6 +27,7 @@ function SurveyQuest() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    document.body.classList = "account";
     setIsLoading(true);
     handleQuestions(setQuestions);
     setIsLoading(false);
@@ -65,10 +66,7 @@ function SurveyQuest() {
       ) : (
         <>
           <main className="flex rounded-2xl w-full justify-center ">
-            <form
-              className="p-3 bg-gray-dark"
-              onSubmit={handleSubmit(onSubmit)}
-            >
+            <form className="p-3" onSubmit={handleSubmit(onSubmit)}>
               {formSubmitted ? (
                 <motion.div
                   className="text-white text-center absolute top-1/2  left-1/2"
