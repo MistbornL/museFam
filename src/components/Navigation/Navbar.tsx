@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { faB, faBars } from "@fortawesome/free-solid-svg-icons";
-import MenuItems from "../components/MenuItems";
+import MenuItems from "../MenuItems";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);

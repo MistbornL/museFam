@@ -27,7 +27,7 @@ function SurveyQuest() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    document.body.classList = "account";
+    // document.body.classList = "account";
     setIsLoading(true);
     handleQuestions(setQuestions);
     setIsLoading(false);
