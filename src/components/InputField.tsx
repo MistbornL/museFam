@@ -1,6 +1,7 @@
 import React from "react";
+import { InputFieldProps } from "../models/inputField";
 
-const InputField = ({
+const InputField: React.FC<InputFieldProps> = ({
   no,
   name,
   register,
