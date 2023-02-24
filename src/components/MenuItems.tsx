@@ -4,7 +4,14 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
-const MenuItems = ({ setActive, showMenu, active, navItems }) => {
+import { MenuItemsProps } from "../models/menuItem";
+
+const MenuItems: React.FC<MenuItemsProps> = ({
+  setActive,
+  showMenu,
+  active,
+  navItems,
+}) => {
   return (
     <motion.div
       className="fixed top-0 left-0 w-full h-full z-50 overflow-y-auto"

@@ -1,6 +1,9 @@
-import React from "react";
-
-export const StepIcons = ({ page, name, index }) => {
+type StepIconsProps = {
+  page: number;
+  name: string;
+  index: number;
+};
+export const StepIcons: React.FC<StepIconsProps> = ({ page, name, index }) => {
   return (
     <li
       className={
