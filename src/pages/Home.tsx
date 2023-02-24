@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
-import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../Navigation/Navbar";
 
 export const Home = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    document.body.classList = "";
+    document.body.classList.remove("account");
   }, []);
 
   return (

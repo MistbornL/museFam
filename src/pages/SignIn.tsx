@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Navbar } from "../Navigation/Navbar";
-import { formSchemaLogin } from "../components/Schema/formSchemaLogin";
+import { formSchemaLogin } from "../Schema/formSchemaLogin";
 import { motion } from "framer-motion";
 import { handleLogin } from "../api/handleLogin";
 

@@ -4,7 +4,7 @@ import "./survey.scss";
 import { Navbar } from "../../Navigation/Navbar";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { surveySchema } from "../../components/Schema/surveySchema";
+import { surveySchema } from "../../Schema/surveySchema";
 import InputField from "../../components/InputField";
 import { useEffect } from "react";
 import { handleQuestions } from "../../api/handleQuestions";

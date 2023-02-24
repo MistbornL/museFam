@@ -4,7 +4,7 @@ import SecondForm from "../components/steps/SecondForm";
 import ThirdForm from "../components/steps/ThirdForm";
 import { Navbar } from "../Navigation/Navbar";
 import { useForm } from "react-hook-form";
-import { formSchemaPersonal } from "../components/Schema/formSchemaPersonal";
+import { formSchemaPersonal } from "../Schema/formSchemaPersonal";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StepIcons } from "../components/StepIcons";
@@ -52,7 +52,7 @@ export const SignUp = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     handleRegister(data, navigate);
-    setLoading(true);
+    setLoading(false);
   };
 
   return (

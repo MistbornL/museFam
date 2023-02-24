@@ -13,7 +13,7 @@ export const Account = () => {
   const token = Cookies.get("token");
 
   useEffect(() => {
-    document.body.classList = "account";
+    document.body.classList.add("account");
     if (!token) {
       navigate("/");
     }
