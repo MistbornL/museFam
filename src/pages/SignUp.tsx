@@ -2,13 +2,11 @@ import React, { Fragment, useState } from "react";
 import FirstForm from "../components/steps/FirstForm";
 import SecondForm from "../components/steps/SecondForm";
 import ThirdForm from "../components/steps/ThirdForm";
-import { Navbar } from "../Navigation/Navbar";
 import { useForm } from "react-hook-form";
 import { formSchemaPersonal } from "../Schema/formSchemaPersonal";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StepIcons } from "../components/StepIcons";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { handleRegister } from "../api/handleRegister";
 import { useNavigate } from "react-router-dom";

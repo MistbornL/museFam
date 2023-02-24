@@ -50,7 +50,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({
                 <Link
                   onClick={() => {
                     Cookies.remove("token");
-                    console.log(Cookies("token"));
+
                     setActive(false);
                   }}
                   to={"/"}
